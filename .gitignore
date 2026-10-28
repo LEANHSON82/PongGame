@@ -1,0 +1,17 @@
+/out
+bin/
+build/
+
+/.vs
+.idea/
+CMakeSettings.json
+Makefile
+
+settings/
+saves/build-web/
+
+# unused libraries / raylib extras (not needed to build the game)
+thirdparty/imgui-docking/
+thirdparty/rlImgui/
+thirdparty/raylib-5.0/examples/
+thirdparty/raylib-5.0/projects/

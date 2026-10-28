@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pong</title>
+    <style>
+        html, body { margin: 0; height: 100%; background: #062a3a; color: #fff; font-family: sans-serif; }
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+        /* scale the 1280x800 canvas down to fit the window, keeping its aspect ratio */
+        canvas.emscripten { display: block; max-width: 96vw; max-height: 85vh; width: auto; height: auto; aspect-ratio: 1280 / 800; outline: none; }
+        p { margin: 0; opacity: .8; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+    <p id="status">Đang tải...</p>
+    <script>
+        var Module = {
+            canvas: document.getElementById('canvas'),
+            setStatus: function (text) {
+                document.getElementById('status').textContent = text || 'W / S: di chuyển vợt';
+            },
+            print: function (text) { console.log(text); },
+            printErr: function (text) { console.error(text); }
+        };
+        window.addEventListener('keydown', function (e) {
+            // keep W/S/arrow keys from scrolling the page
+            if (['KeyW', 'KeyS', 'ArrowUp', 'ArrowDown', 'Space'].includes(e.code)) e.preventDefault();
+        });
+    </script>
+    {{{ SCRIPT }}}
+</body>
+</html>
